@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "sim_engine.h"
+#include "common.h"
 
 extern int TRACE;
 extern int YES;
@@ -11,10 +12,13 @@ struct distance_table {
 } dt2;
 
 
+
 /* Students to write the following two routines, and maybe some others */
 
 void rtinit2() {
   /* TODO */
+  int known[] = {3,1,0,2};
+  initINF(dt2.costs, 2, known);
 }
 
 void rtupdate2(struct rtpkt *rcvdpkt) {

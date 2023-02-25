@@ -12,15 +12,14 @@ struct distance_table {
 } dt0;
 
 
+
 /* Students to write the following two routines, and maybe some others */
 
 void rtinit0() {
   /* TODO */
-  for (int i = 0; i < TABLE_ENTRIES; i++)
-    for (int j = 0; j < TABLE_ENTRIES; j++)
-    {
-      dt0.costs[i][j] = 999;
-    }
+  int known[] = {0,1,3,7};
+  initINF(dt0.costs, 0, known);
+  
 }
 
 void rtupdate0(struct rtpkt *rcvdpkt) {
