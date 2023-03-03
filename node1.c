@@ -25,7 +25,7 @@ void rtinit1() {
 void rtupdate1(struct rtpkt *rcvdpkt) {
     /* TODO */
   int me = 1;
-  //response_doer(rcvdpkt, me, dt1.costs[me]);
+  response_doer(rcvdpkt, me, dt1.costs[me], dt1.costs);
 }
 
 void printdt1(struct distance_table *dtptr) {

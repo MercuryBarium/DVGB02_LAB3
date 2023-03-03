@@ -28,6 +28,7 @@ void rtinit3() {
 
 void rtupdate3(struct rtpkt *rcvdpkt) {
   /* TODO */
+  response_doer(rcvdpkt, 3, dt3.costs[3], dt3.costs);
 }
 
 void printdt3(struct distance_table *dtptr) {

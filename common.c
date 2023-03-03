@@ -17,12 +17,18 @@ void initINF(int dt[TABLE_ENTRIES][TABLE_ENTRIES], int pos, int known[TABLE_ENTR
     for (int i = 0; i < 4; i++)
         dt[pos][i] = known[i];
 }
-void response_doer(struct rtpkt * rcvdpkt,int me, int known_by_me[TABLE_ENTRIES])
+void response_doer(struct rtpkt * rcvdpkt,int me, int known_by_me[TABLE_ENTRIES], int dt[TABLE_ENTRIES][TABLE_ENTRIES])
 {
-  if (rcvdpkt->destid == me)
-  {
-    
-  }
+  printf("%sNODE %d RECIEVED FROM Node %d\n", node_color(me), me, rcvdpkt->sourceid);
+  for (int i = 0; i < TABLE_ENTRIES; i++)
+    if (dt[rcvdpkt->sourceid][i] > rcvdpkt->mincost[i])
+    {
+      printf("\tDT[%d][%d]\t<-\t%d\n", rcvdpkt->sourceid, i, rcvdpkt->mincost[i]);
+      dt[rcvdpkt->sourceid][i] = rcvdpkt->mincost[i];
+    }
+  printf("\e[0m");
+
+
 }
 
 void advertise(int me, int k[TABLE_ENTRIES])

@@ -27,7 +27,7 @@ void rtinit2() {
 
 void rtupdate2(struct rtpkt *rcvdpkt) {
   /* TODO */
-  //response_doer(rcvdpkt, 2, dt2.costs[2]);
+  response_doer(rcvdpkt, 2, dt2.costs[2], dt2.costs);
 }
 
 void printdt2(struct distance_table *dtptr) {
