@@ -17,8 +17,12 @@ struct distance_table {
 
 void rtinit3() {
   /* TODO */
+  int me = 3;
+  printf("%sInitializing Node 3...\e[0m\n", node_color(me));
   int known[TABLE_ENTRIES] = {3,INFINITY,2,0};
-  initINF(dt3.costs, 3, known);
+  initINF(dt3.costs, me, known);
+
+  advertise(me , known);
 }
 
 

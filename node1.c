@@ -8,22 +8,24 @@ extern int YES;
 extern int NO;
 
 struct distance_table {
-  int costs[4][4];
+  int costs[TABLE_ENTRIES][TABLE_ENTRIES];
 } dt1;
-
-
-
 
 /* Students to write the following two routines, and maybe some others */
 
 void rtinit1() {
+  int me = 1;
+  printf("\e[0;33mInitializing Node 1...\e[0m\n");
   int known[] = {1,0,1,INFINITY};
-  initINF(dt1.costs, 1, known);
-
+  initINF(dt1.costs, me, known);
+  
+  advertise(me, known);
 }
 
 void rtupdate1(struct rtpkt *rcvdpkt) {
     /* TODO */
+  int me = 1;
+  //response_doer(rcvdpkt, me, dt1.costs[me]);
 }
 
 void printdt1(struct distance_table *dtptr) {

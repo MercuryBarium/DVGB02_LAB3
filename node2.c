@@ -17,12 +17,17 @@ struct distance_table {
 
 void rtinit2() {
   /* TODO */
+  int me = 2;
+  printf("\e[0;34mInitializing Node 2...\e[0m\n");
   int known[] = {3,1,0,2};
-  initINF(dt2.costs, 2, known);
+  initINF(dt2.costs, me, known);
+
+  advertise(me, known);
 }
 
 void rtupdate2(struct rtpkt *rcvdpkt) {
   /* TODO */
+  //response_doer(rcvdpkt, 2, dt2.costs[2]);
 }
 
 void printdt2(struct distance_table *dtptr) {
