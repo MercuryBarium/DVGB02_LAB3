@@ -20,12 +20,14 @@ void rtinit1() {
   initINF(dt1.costs, me, known);
   
   advertise(me, known);
+  printGraph(dt1.costs, me);
 }
 
 void rtupdate1(struct rtpkt *rcvdpkt) {
     /* TODO */
   int me = 1;
   response_doer(rcvdpkt, me, dt1.costs[me], dt1.costs);
+  printGraph(dt1.costs, me);
 }
 
 void printdt1(struct distance_table *dtptr) {

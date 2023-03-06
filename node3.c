@@ -19,16 +19,18 @@ void rtinit3() {
   /* TODO */
   int me = 3;
   printf("%sInitializing Node 3...\e[0m\n", node_color(me));
-  int known[TABLE_ENTRIES] = {3,INFINITY,2,0};
+  int known[TABLE_ENTRIES] = {7,INFINITY,2,0};
   initINF(dt3.costs, me, known);
 
   advertise(me , known);
+  printGraph(dt3.costs, me);
 }
 
 
 void rtupdate3(struct rtpkt *rcvdpkt) {
   /* TODO */
   response_doer(rcvdpkt, 3, dt3.costs[3], dt3.costs);
+  printGraph(dt3.costs, 3);
 }
 
 void printdt3(struct distance_table *dtptr) {
