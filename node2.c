@@ -15,22 +15,6 @@ struct distance_table {
 
 /* Students to write the following two routines, and maybe some others */
 
-void rtinit2() {
-  /* TODO */
-  int me = 2;
-  printf("\e[0;34mInitializing Node 2...\e[0m\n");
-  int known[] = {3,1,0,2};
-  initINF(dt2.costs, me, known);
-
-  advertise(me, known);
-  printGraph(dt2.costs, me);
-}
-
-void rtupdate2(struct rtpkt *rcvdpkt) {
-  /* TODO */
-  response_doer(rcvdpkt, 2, dt2.costs[2], dt2.costs);
-  printGraph(dt2.costs, 2);
-}
 
 void printdt2(struct distance_table *dtptr) {
   printf("                via     \n");
@@ -43,6 +27,26 @@ void printdt2(struct distance_table *dtptr) {
   printf("     3|  %3d   %3d   %3d\n",dtptr->costs[3][0],
 	 dtptr->costs[3][1],dtptr->costs[3][3]);
 }
+
+void rtinit2() {
+  /* TODO */
+  int me = 2;
+  printf("\e[0;34mInitializing Node 2...\e[0m\n");
+  int known[] = {3,1,0,2};
+  initINF(dt2.costs, me, known);
+
+  advertise(me, known);
+}
+
+void rtupdate2(struct rtpkt *rcvdpkt) {
+  /* TODO */
+  if (response_doer(rcvdpkt, 2, dt2.costs[2], dt2.costs))
+    advertise(2, dt2.costs[2]);
+  printf("%s", node_color(2));
+  printdt2(&dt2);
+  printf("\e[0m");
+}
+
 
 
 
