@@ -28,7 +28,7 @@ void rtinit1() {
   int known[] = {1,0,1,INFINITY};
   initINF(dt1.costs, me, known);
   
-  advertise(me, known);
+  advertise(me, dt1.costs);
   
 }
 
@@ -36,7 +36,8 @@ void rtupdate1(struct rtpkt *rcvdpkt) {
     /* TODO */
   int me = 1;
   if (response_doer(rcvdpkt, me, dt1.costs[me], dt1.costs))
-    advertise(me, dt1.costs[me]);
+    advertise(me, dt1.costs);
+    
   printf("%s", node_color(1));
   printdt1(&dt1);
   printf("\e[0m");

@@ -33,13 +33,13 @@ void rtinit0() {
   int known_by_0[] = {0,1,3,7};
   initINF(dt0.costs, 0, known_by_0);
 
-  advertise(me_0, known_by_0);
+  advertise(me_0, dt0.costs);
   
 }
 
 void rtupdate0(struct rtpkt *rcvdpkt) {
-  if (response_doer(rcvdpkt, me_0, dt0.costs[me_0], dt0.costs))
-    advertise(me_0, dt0.costs[me_0]);
+  if (response_doer(rcvdpkt, me_0, dt0.costs[me_0], dt0.costs) == 1)
+    advertise(me_0, dt0.costs);
   
   printf("%s", node_color(me_0));
   printdt0(&dt0);

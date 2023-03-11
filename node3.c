@@ -32,14 +32,15 @@ void rtinit3()
   int known[TABLE_ENTRIES] = {7, INFINITY, 2, 0};
   initINF(dt3.costs, me, known);
 
-  advertise(me, known);
+  advertise(me, dt3.costs);
 }
 
 void rtupdate3(struct rtpkt *rcvdpkt)
 {
   /* TODO */
   if (response_doer(rcvdpkt, 3, dt3.costs[3], dt3.costs))
-    advertise(3, dt3.costs[3]);
+    advertise(3, dt3.costs);
+  
   printf("%s", node_color(3));
   printdt3(&dt3);
   printf("\e[0m");
